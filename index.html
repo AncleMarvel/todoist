@@ -41,11 +41,52 @@
             </div>
         </div>
     </header>
-    <div class="add-todo pop-up__wrapper">
-        <div class="pop-up">
+    <div class="add-todo__wrapper pop-up__wrapper">
+        <div class="add-todo pop-up">
+            <div class="add-todo__input-container">
+                <div contenteditable="true" class="add-todo__title-input add-todo__input" id="todo-title-input"></div>
+                <div contenteditable="true" class="add-todo__description-input add-todo__input" id="todo-title-input"></div>
 
+                <textarea class="add-todo__title-input add-todo__input__hidden" name="title"
+                    id="todo-title-input__hidden"></textarea>
+                <textarea class="dd-todo__description-input add-todo__input__hidden" name="description"
+                    id="todo-description-input__hidden"></textarea>
+            </div>
+            <div class="add-todo__bottom-bar">
+                <div class="add-todo__bottom-bar_column">
+                    <button class="add-todo__choose-date-btn add-todo__bottom-bar_btn add-todo__choose-date-btn_today">
+                        <i class="fa-solid fa-calendar-day"></i>
+                        Today
+                    </button>
+                    <button class="add-todo__choose-project-btn add-todo__bottom-bar_btn add-todo__choose-project-btn_incoming">
+                        <i class="fa-solid fa-inbox"></i>
+                        Incoming
+                    </button>
+                </div>
+                <div class="add-todo__bottom-bar_column">
+                    <button class="add-todo__tag-btn add-todo__icon-btn">
+                        <i class="fa-solid fa-tag"></i>
+                    </button>
+                    <button class="add-todo__priority-btn add-todo__icon-btn">
+                        <i class="fa-solid fa-font-awesome"></i>
+                    </button>
+                    <button class="add-todo__deadline-btn add-todo__icon-btn">
+                        <i class="fa-solid fa-clock"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="add-todo__footer">
+                <button class="add-todo__footer-btn add-todo__footer-btn_add">
+                    Add task
+                </button>
+                <button class="add-todo__footer-btn add-todo__footer-btn_cancel">
+                    Cancel
+                </button>
+            </div>
         </div>
     </div>
+
+    <script src="scripts/main.js" defer></script>
 </body>
 
 </html>

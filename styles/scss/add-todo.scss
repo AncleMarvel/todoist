@@ -1,0 +1,152 @@
+.add-todo__input-container {
+    width: 100%;
+    overflow-y: auto;
+    max-height: 14rem;
+}
+
+.add-todo__input {
+    width: 100%;
+    min-height: 1.1rem;
+    padding: 0;
+    position: relative;
+
+    &:not(:empty)::before {
+        display: none;
+    }
+
+    &:first-child {
+        margin-bottom: 10px;
+    }
+}
+
+.add-todo__title-input::before {
+    content: "e.g., Do homework #english";
+    position: absolute;
+    opacity: .7;
+    padding-left: 2px;
+}
+
+.add-todo__description-input::before {
+    content: "Description";
+    position: absolute;
+    font-weight: 300;
+    opacity: .5;
+    padding-left: 2px;
+}
+
+.add-todo__input__hidden {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.add-todo__bottom-bar {
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #53535370;
+}
+
+.add-todo__bottom-bar_column {
+    display: flex;
+}
+
+.add-todo__bottom-bar_btn {
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    &:not(:first-child) {
+        margin-left: 5px;
+    }
+
+    transition: .25s;
+    -webkit-transition: .25s;
+    -moz-transition: .25s;
+    -ms-transition: .25s;
+    -o-transition: .25s;
+}
+
+.add-todo__choose-date-btn_today {
+    color: rgba(0, 128, 0, 0.7);
+}
+
+.add-todo__choose-project-btn_incoming {
+    color: rgba(0, 0, 255, 0.7);
+}
+
+.add-todo__icon-btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #535353;
+
+    svg {
+        width: 60%;
+        height: 60%;
+    }
+    
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    transition: .25s;
+    -webkit-transition: .25s;
+    -moz-transition: .25s;
+    -ms-transition: .25s;
+    -o-transition: .25s;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.add-todo__footer {
+    display: flex;
+    width: 100%;
+}
+
+.add-todo__footer-btn {
+    padding: 5px 10px;
+    font-weight: 500;
+
+    &:not(:first-child) {
+        margin-left: 10px;
+    }
+
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.add-todo__footer-btn_add {
+    background-color: $red;
+    color: white;
+}
+
+.add-todo__footer-btn_cancel {
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.add-todo__footer-btn_disabled {
+    opacity: .5;
+}

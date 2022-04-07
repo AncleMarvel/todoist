@@ -158,3 +158,17 @@ input {
     border: none;
     outline: none;
 }
+
+textarea {
+    resize: none;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+div[contenteditable="true"] {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+}

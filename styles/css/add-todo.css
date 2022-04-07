@@ -1,0 +1,37 @@
+.add-todo__input-container {
+  width: 100%;
+  overflow-y: auto;
+  max-height: 14rem;
+}
+
+.add-todo__input {
+  width: 100%;
+  min-height: 1.1rem;
+  padding: 0;
+  position: relative;
+}
+.add-todo__input:not(:empty)::before {
+  display: none;
+}
+.add-todo__input:first-child {
+  margin-bottom: 10px;
+}
+
+.add-todo__title-input::before {
+  content: "e.g., Do homework #english";
+  position: absolute;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+.add-todo__description-input::before {
+  content: "Description";
+  position: absolute;
+  opacity: 0.5;
+}
+
+.add-todo__input__hidden {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}

@@ -1,0 +1,167 @@
+.header {
+    width: 100%;
+    padding: 0 5%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $red;
+
+    .page-width {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.header-column {
+    height: $header-btn-size;
+    display: flex;
+    align-items: center;
+}
+
+.header-column__inner-item:not(:first-child) {
+    margin-left: 10px;
+}
+
+.header__search-input_wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.header__btn {
+    width: $header-btn-size;
+    height: $header-btn-size;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    svg {
+        width: 60%;
+        height: 60%;
+    }
+
+    transition: .25s;
+    -webkit-transition: .25s;
+    -moz-transition: .25s;
+    -ms-transition: .25s;
+    -o-transition: .25s;
+}
+
+.header__search-input_wrapper {
+    position: relative;
+
+    &:hover .search-input_icon-wrapper_search svg,
+    &:active .search-input_icon-wrapper_search svg,
+    &:focus .search-input_icon-wrapper_search svg,
+    &:target .search-input_icon-wrapper_search svg {
+        color: $red;
+    }
+
+    &:hover .header__search-input,
+    &:active .header__search-input,
+    &:focus .header__search-input,
+    &:target .header__search-input {
+        background-color: white;
+    }
+
+    &:hover .header__search-input::placeholder,
+    &:active .header__search-input::placeholder,
+    &:focus .header__search-input::placeholder,
+    &:target .header__search-input::placeholder {
+        color: black;
+    }
+
+    transition: .25s;
+    -webkit-transition: .25s;
+    -moz-transition: .25s;
+    -ms-transition: .25s;
+    -o-transition: .25s;
+}
+
+.search-btn {
+    width: calc(#{$header-btn-size} - 10px);
+    height: calc(#{$header-btn-size} - 10px);
+}
+
+.search-input_icon-wrapper_search {
+    position: absolute;
+    left: 0px;
+
+    transition: .25s;
+    -webkit-transition: .25s;
+    -moz-transition: .25s;
+    -ms-transition: .25s;
+    -o-transition: .25s;
+}
+
+.search-input_icon-wrapper_close {
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    z-index: -1;
+}
+
+.header__search-input {
+    width: 20vw;
+    min-width: 150px;
+    height: calc(#{$header-btn-size} - 10px);
+    background-color: #ffffff75;
+    padding-left: 30px;
+    color: white;
+
+    &::placeholder {
+        color: white;
+
+        transition: .25s;
+        -webkit-transition: .25s;
+        -moz-transition: .25s;
+        -ms-transition: .25s;
+        -o-transition: .25s;
+    }
+
+    &:active+.search-input_icon-wrapper_search svg,
+    &:focus+.search-input_icon-wrapper_search svg,
+    &:target+.search-input_icon-wrapper_search svg {
+        color: $red;
+    }
+
+    &:active+.search-input_icon-wrapper_search+.search-input_icon-wrapper_close,
+    &:focus+.search-input_icon-wrapper_search+.search-input_icon-wrapper_close,
+    &:target+.search-input_icon-wrapper_search+.search-input_icon-wrapper_close {
+        z-index: 1;
+        opacity: 1;
+
+        svg {
+            color: $red;
+        }
+    }
+
+    &:active,
+    &:focus,
+    &:target {
+        background-color: white;
+        color: black;
+        width: 35vw;
+    }
+
+    &:active::placeholder,
+    &:focus::placeholder,
+    &:target::placeholder {
+        color: black;
+    }
+
+    transition: .25s;
+    -webkit-transition: .25s;
+    -moz-transition: .25s;
+    -ms-transition: .25s;
+    -o-transition: .25s;
+}
