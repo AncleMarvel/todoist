@@ -8,6 +8,10 @@ $pop-up-padding: 2%;
     margin: 0 auto;
 }
 
+.main {
+    width: 50%;
+}
+
 .pop-up__wrapper {
     width: 100vw;
     height: 100vh;
@@ -17,6 +21,11 @@ $pop-up-padding: 2%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@mixin border-shadows__light {
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
 }
 
 .pop-up {
@@ -35,4 +44,42 @@ $pop-up-padding: 2%;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+}
+
+.open-when-checked__label {
+    font-weight: bold;
+    position: relative;
+
+    svg {
+        margin-right: 5px;
+    }
+
+    .open-when-checked__checkbox {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: -1 !important;
+        opacity: 0;
+
+        &+.open-when-checked__target {
+            width: 500%;
+            display: none;
+            position: absolute;
+            top: 150%;
+            left: -200%;
+            padding: 20px 10px;
+        }
+
+        &:checked+.open-when-checked__target {
+            display: flex;
+        }
+    }
+}
+
+.none {
+    display: none !important;
+}
+
+.noscrool {
+    overflow: hidden !important;
 }

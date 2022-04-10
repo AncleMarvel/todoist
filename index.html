@@ -35,13 +35,41 @@
             </div>
 
             <div class="header-column">
-                <button class="header__add-todo_btn header-column__inner-item header__btn">
+                <button class="header__add-todo_btn header-column__inner-item header__btn add-todo__pop-up_open" id="header__add-todo_btn">
                     <i class="fa-solid fa-plus"></i>
                 </button>
             </div>
         </div>
     </header>
-    <div class="add-todo__wrapper pop-up__wrapper">
+    <main class="main page-width">
+        <header class="main-header">
+            <h2 class="main-header__heading">
+                Incoming
+            </h2>
+
+            <div class="main-header__settings">
+                <label class="main-header__settings_btn open-when-checked__label" for="main-header__sort-btn">
+                    <i class="fa-solid fa-sliders"></i>
+                    Display
+                    <input class="open-when-checked__checkbox" type="checkbox" id="main-header__sort-btn">
+
+                    <div class="main-header__drop-down_container open-when-checked__target main-header__drop-down_sort-method-container">
+                        <h6 class="main-header__drop-down_title">
+                            Sort By
+                        </h6>
+
+                        <select class="main-header__drop-down_list open-when-checked__target">
+                            <option value="Deadline" class="main-header__drop-down_item">Deadline</option>
+                            <option value="Create date" class="main-header__drop-down_item">Create date</option>
+                            <option value="Priority" class="main-header__drop-down_item">Priority</option>
+                            <option value="Tag" class="main-header__drop-down_item">Tag</option>
+                        </select>
+                    </div>
+                </label>
+            </div>
+        </header>
+    </main>
+    <div class="add-todo__wrapper pop-up__wrapper none">
         <div class="add-todo pop-up">
             <div class="add-todo__input-container">
                 <div contenteditable="true" class="add-todo__title-input add-todo__input" id="todo-title-input"></div>
@@ -86,7 +114,7 @@
         </div>
     </div>
 
-    <script src="scripts/main.js" defer></script>
+    <script src="scripts/main.js" defer type="module"></script>
 </body>
 
 </html>
