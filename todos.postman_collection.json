@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "d08a2eda-2335-4079-979d-813cd072f617",
+		"name": "todos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "me",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/auth/me",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/todos/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"todos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add todo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"test\",\r\n    \"task\": \"task\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/todos/?priority=3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"todos",
+						""
+					],
+					"query": [
+						{
+							"key": "priority",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete todo",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/todos/adc0ed59-3113-4288-901c-42bf5a66156f",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"todos",
+						"adc0ed59-3113-4288-901c-42bf5a66156f"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
