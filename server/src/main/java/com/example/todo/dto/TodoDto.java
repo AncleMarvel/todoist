@@ -1,8 +1,5 @@
 package com.example.todo.dto;
 
-import com.example.todo.entities.Project;
-import com.example.todo.entities.User;
-
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.time.LocalDateTime;
