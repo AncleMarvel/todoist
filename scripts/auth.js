@@ -37,8 +37,6 @@ function getJwtTokensFromWindowLocation() {
 async function canIGetMe() {
     let foo;
     await getMe().then(result => {
-        console.log("RESULT...");
-        console.log(result);
 
         if (!(result)) {
             foo = false;

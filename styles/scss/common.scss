@@ -74,11 +74,17 @@ $pop-up-padding: 2%;
             top: 150%;
             left: -200%;
             padding: 20px 10px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
         }
 
         &:checked+.open-when-checked__target {
             display: flex;
             background-color: white;
+            z-index: 1;
         }
     }
 }

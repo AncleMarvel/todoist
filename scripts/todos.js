@@ -1,16 +1,16 @@
-import { getTodos } from './routes.js';
+import { getTodos, removeTodo, addTodo } from './routes.js';
 
 let TODOS;
 
 function createTodoElement(todoData) {
     let date;
-    todoData.completionTime ? date = todoData.completionTime : date = '';
-    const todoMockup =
-        `<li class="todo" data-todo-id="${todoData.id}">
+    todoData.completionTime ? date = todoData.completionTime : date = 'No deadline';
+
+    return `<li class="todo" data-todo-id="${todoData.id}">
             <div class="todo__checkbox-wrapper">
-                <label for="todo-id__checkbox" class="todo__checkbox_label">
+                <label for="${todoData.id}" class="todo__checkbox_label">
+                    <input type="checkbox" class="todo__checkbox_input" id="${todoData.id}">
                     <i class="fa-solid fa-check"></i>
-                    <input type="checkbox" class="todo__checkbox_input" id="todo-id__checkbox">
                 </label>
             </div>
             <div class="todo__data-wrapper">
@@ -35,19 +35,91 @@ function createTodoElement(todoData) {
                 </button>
             </div>
         </li>`;
-    return todoMockup;
+
+}
+
+function pushTodoElementToContainer(todoElement) {
+    const container = document.querySelector('.todo-container');
+    container.insertAdjacentHTML('beforeend', todoElement);
+    return container.querySelectorAll('.todo')[container.querySelectorAll('.todo').length - 1];
 }
 
 function drawTodos() {
-    const container = document.querySelector('.todo-container');
-
     if (TODOS.length < 1) {
         return;
     }
 
     TODOS.forEach(todo => {
-        container.insertAdjacentHTML('beforeend', createTodoElement(todo));
+        pushTodoElementToContainer(createTodoElement(todo));
     });
+}
+
+function startRemovingTodo(todo) {
+    todo.classList.add('todo__removed');
+}
+
+function endRemovingTodo(todo) {
+    todo.remove();
+}
+
+function getParamsForTodoAdding() {
+    const titleInput = document.querySelector("#todo-title-input");
+    const descriptionInput = document.querySelector("#todo-description-input");
+
+    return {
+        'title': titleInput.innerText,
+        'description': descriptionInput.innerText
+    }
+}
+
+function removeTodoHandler(id) {
+    const todo = document.querySelector(`.todo[data-todo-id="${id}"]`);
+    startRemovingTodo(todo);
+    removeTodo(id).then(() => {
+        setTimeout(() => {
+            endRemovingTodo(todo);
+        }, 150);
+    });
+}
+
+function clearAndHideAddTodoPopUp() {
+    const popUp = document.querySelector('.add-todo__wrapper');
+    const titleInput = popUp.querySelector('#todo-title-input');
+    const descriptionInput = popUp.querySelector('#todo-description-input');
+    titleInput.innerText = '';
+    descriptionInput.innerText = '';
+    popUp.classList.add('none');
+}
+
+function addTodoHandler() {
+    const params = getParamsForTodoAdding();
+    addTodo(params).then((createdTodo) => {
+        updateTodoList(createdTodo);
+    }).then(() => {
+        clearAndHideAddTodoPopUp();
+    });
+}
+
+function updateTodoList(newTodo) {
+    TODOS.push(newTodo);
+    const newTodoElement = createTodoElement(TODOS[TODOS.length - 1]);
+    const insertedElement = pushTodoElementToContainer(newTodoElement);
+
+    insertedElement.querySelector('.todo__checkbox_input').addEventListener('change', (ev) => {
+        removeTodoHandler(ev.target.id);
+    });
+}
+
+function todoEventsInit() {
+    const removeTodoBtnsList = document.querySelectorAll('.todo__checkbox_input');
+    removeTodoBtnsList.forEach(btn => {
+        btn.addEventListener('change', (ev) => {
+            removeTodoHandler(ev.target.id);
+        });
+    });
+
+    const addTodoBtn = document.querySelector('.add-todo__footer-btn_add');
+    addTodoBtn.addEventListener('click', addTodoHandler);
 }
 
 export async function todosInit() {
@@ -58,4 +130,6 @@ export async function todosInit() {
         .catch(error => console.log('error', error));
 
     drawTodos();
+
+    todoEventsInit();
 }

@@ -121,7 +121,7 @@
     }
 
     &:hover svg {
-        opacity: 1;
+        opacity: .6;
     }
 }
 
@@ -129,11 +129,36 @@
     @include hidden-input;
 }
 
+.todo__checkbox_input:checked~svg {
+    opacity: 1;
+}
+
+.todo__data-wrapper {
+    padding-right: 35px;
+}
+
 .todo__title {
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 600;
     color: #3a0909;
     margin-bottom: 10px;
+    transition: .15s;
+    -webkit-transition: .15s;
+    -moz-transition: .15s;
+    -ms-transition: .15s;
+    -o-transition: .15s;
+}
+
+.todo__description,
+.add-todo__description-input {
+    margin-bottom: 20px;
+    opacity: .7;
+}
+
+.todo__removed {
+    .todo__title {
+        background-color: $red;
+    }
 }
 
 .todo__date {
@@ -141,6 +166,10 @@
     color: #3a0909;
     opacity: .7;
     font-weight: 300;
+
+    svg {
+        margin-right: 5px;
+    }
 }
 
 .todo__settings-wrapper {
