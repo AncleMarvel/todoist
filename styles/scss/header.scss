@@ -165,3 +165,30 @@
     -ms-transition: .25s;
     -o-transition: .25s;
 }
+
+[data-auth="false"]>.header__account-img_wrapper {
+    display: none;
+}
+
+[data-auth="true"]>.header__account-img_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    .header__account-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+    }
+}
+
+[data-auth="true"]>svg {
+    display: none;
+}

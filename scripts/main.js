@@ -1,5 +1,6 @@
 'use strict';
 import { createPopUp } from './pop-up.js';
+import { auth } from './auth.js';
 
 const addTodoPopUpConfig = {
     openInitiatorSelector: '.add-todo__pop-up_open',
@@ -22,4 +23,5 @@ const addTodoPopUpConfig = {
 const addTodoPopUp = createPopUp(addTodoPopUpConfig);
 
 document.addEventListener('DOMContentLoaded', () => {
+    auth();
 });
