@@ -1,10 +1,10 @@
 package com.example.todo.controllers;
 
 import com.example.todo.dto.ErrorDto;
-import com.example.todo.util.Filters;
 import com.example.todo.dto.TodoDto;
 import com.example.todo.entities.User;
 import com.example.todo.services.TodoService;
+import com.example.todo.util.Filters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

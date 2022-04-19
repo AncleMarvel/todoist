@@ -34,6 +34,34 @@ function getJwtTokensFromWindowLocation() {
     }
 }
 
+async function tryToRefreshAccessToken() {
+    let tokens;
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const refreshToken = getRefreshToken();
+    var raw = JSON.stringify({
+        "refreshToken": refreshToken
+    });
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    await fetch(`${serverDomen}/auth/refresh`, requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            tokens = JSON.parse(result);
+            return tokens;
+        })
+        .catch(error => console.log('error', error));
+
+    return tokens;
+}
+
 async function canIGetMe() {
     let foo;
     await getMe().then(result => {
@@ -112,11 +140,29 @@ export async function auth() {
         });
 
         if (accessTokenDoesntExpire) {
+            if (ifTokensExistInWindowLocation()) {
+                clearWindowLocation();
+            }
             changeAccountIcon();
             return true;
         } else {
-            removeTokensFromLS();
-            redirectToAuth();
+            let tryingRefreshAccessToken;
+
+            await tryToRefreshAccessToken().then((res) => {
+                if (res.accessToken) {
+                    tryingRefreshAccessToken = res.accessToken;
+                    return true;
+                } else {
+                    removeTokensFromLS();
+                    redirectToAuth();
+                }
+            });
+
+            setAccessToken(tryingRefreshAccessToken);
+            await canIGetMe();
+            changeAccountIcon();
+            clearWindowLocation();
+            return true;
         }
     } else if (ifTokensExistInWindowLocation()) {
         const { accessToken, refreshToken } = getJwtTokensFromWindowLocation();
